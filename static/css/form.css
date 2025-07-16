@@ -1,0 +1,77 @@
+body{margin:0px;
+        padding:0px;
+        background-color:white;}
+
+.navbar {background-color:rgb(25, 40, 118);
+            position:relative;
+           height:85px;
+           padding:0px 5px;
+            margin-bottom:0px;
+            z-index:1060;}
+
+.navbar-nav{gap:15px;
+                font-size:17px;}
+
+.nav-item .nav-link p{font-size:10px;
+                        text-align:center;}
+
+
+.navbar .nav-link {
+  display: flex;
+  align-items: center;
+  height: 70px;
+}
+
+.navlogin{font-size:12px;
+                    margin-top:-20px;
+                    margin-left:-10px;
+                    display:inline-block;
+                    text-decoration:none !important;}
+
+.nav-link .fa-user{border-radius:50%;
+                        padding:6px 8px;
+                        background-color:grey;}
+
+
+.nav-item small{position:relative;
+                left:10px;}
+
+.dropdown-item i{margin-right:8px;}
+
+.nav-item .dropdown-menu{z-index:1030;
+                            width:300px;
+                            min-width: unset;
+                           top:75px;
+                           justify-content:space-between;
+                           left:-23px;
+                           padding:0px;
+                           text-align:center;
+                            position:absolute;
+                            border-radius:0px;}
+
+.nav-item.dropdown.show > .nav-link {
+  color: #dcdcdc !important;  /* pale grey */
+  background-color: transparent; /* optional, if needed */
+}
+
+    .navbar .nav-item,
+    .navbar .nav-link,
+    .navbar .navbar-brand{color:white;}
+
+    .navbar .navbar-brand{color:navy!important;
+                            margin:auto;
+                            margin:5px;}
+
+    .navbar .nav-item:hover,
+    .navbar .nav-link:hover{color:aqua !important;}
+
+    .navbar .form-control{background-color: offwhite !important;
+                    color:#000000 !important;
+                    border:0px !important;}
+
+
+    .navbar .form-control::placeholder {
+        color: #888888 !important;
+    }
+
+    .navbar button{color:#f8f9fa !important;}

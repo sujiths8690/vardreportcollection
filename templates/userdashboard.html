@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>VARD Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+ <style>
+  body {
+    background: #f4f6f9;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  .dashboard-header {
+    background-color: #ff6b00;
+    color: white;
+    padding: 1.5rem;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+  .card:hover {
+    transform: translateY(-3px);
+    transition: 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+  .card-icon {
+    font-size: 2rem;
+    color: #ff6b00;
+  }
+
+/* Mobile optimization */
+@media (max-width: 576px) {
+  .dashboard-header {
+    padding: 1rem;
+  }
+
+  .dashboard-header .welcome-title {
+    font-size: 0.7rem;
+  }
+
+  .dashboard-header p {
+    font-size: 0.7rem;
+  }
+
+  .dashboard-header .btn {
+    font-size: 0.65rem;
+    padding: 0.25rem 0.5rem;
+    white-space: nowrap;
+    max-width: 100px; /* Or use width: fit-content; */
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+</style>
+
+</head>
+<body>
+
+<div class="dashboard-header px-3 py-3">
+  <div class="d-flex justify-content-between align-items-center flex-nowrap">
+    <div class="text-truncate">
+      <h3 class="mb-0 fw-bold welcome-title">Welcome to VARD Dashboard</h3>
+      <p class="mb-0">Submit your meeting reports</p>
+    </div>
+    <div class="ms-2">
+      <a href="/admin/" class="btn btn-sm btn-light text-dark fw-semibold">
+        <i class="bi bi-shield-lock me-1"></i> Admin Portal
+      </a>
+    </div>
+  </div>
+</div>
+
+
+
+
+  <div class="container mt-5">
+    <div class="row g-4 justify-content-center">
+
+      <!-- Fill Meeting Report -->
+      <div class="col-md-6 col-lg-4">
+        <a href="{% url 'select_constituency' %}" class="text-decoration-none">
+          <div class="card text-center p-4 h-100">
+            <i class="bi bi-journal-text card-icon mb-2"></i>
+            <h5 class="card-title">Fill Meeting Report</h5>
+            <p class="text-muted small">Start a new VARD meeting report.</p>
+          </div>
+        </a>
+      </div>
+
+
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Select Constituency</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- IMPORTANT -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    @media (max-width: 576px) {
+      h3 {
+        font-size: 1.5rem;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container-sm mt-4 px-3">
+    <h3 class="mb-4">Select Your Area</h3>
+    <form method="post">
+      {% csrf_token %}
+
+      <div class="mb-3">
+        <label for="constituency" class="form-label">Constituency</label>
+        <select id="constituency" name="constituency" class="form-select" required>
+          <option value="">Choose</option>
+          {% for con in constituencies %}
+            <option value="{{ con.const_id }}">{{ con.name }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="local_body" class="form-label">Panchayath / Municipality</label>
+        <select id="local_body" name="local_body" class="form-select" required></select>
+      </div>
+
+      <div class="mb-3">
+        <label for="ward_number" class="form-label">Ward Number</label>
+        <select id="ward_number" name="ward_number" class="form-select" required></select>
+      </div>
+
+      <div class="text-end">
+        <button type="submit" class="btn btn-warning">Next</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $('#constituency').change(function () {
+      let constituencyId = $(this).val();
+      $.get('/ajax/load-local-bodies/', { constituency_id: constituencyId }, function (data) {
+        let localBodySelect = $('#local_body');
+        localBodySelect.empty().append('<option value="">Choose</option>');
+        $('#ward_number').empty();
+        data.forEach(body => {
+          localBodySelect.append(`<option value="${body.Local_body_id}" data-ward-count="${body.new_ward_count}">${body.name} (${body.type})</option>`);
+        });
+      });
+    });
+
+    $('#local_body').change(function () {
+      const wardCount = $('option:selected', this).data('ward-count');
+      const wardSelect = $('#ward_number');
+      wardSelect.empty().append('<option value="">Choose</option>');
+      for (let i = 1; i <= wardCount; i++) {
+        wardSelect.append(`<option value="Ward ${i}">Ward ${i}</option>`);
+      }
+    });
+  </script>
+
+</body>
+</html>
