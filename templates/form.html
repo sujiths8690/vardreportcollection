@@ -9,94 +9,144 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
 
+  {% load static %}
   <style>
     body {
-      background-color: #f2f4f6;
+      background: url("{% static 'images/download.jpeg' %}") no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .overlay {
+      background-color: rgba(255, 255, 255, 0.95);
+      min-height: 100vh;
+      padding-bottom: 2rem;
     }
 
     .form-container {
       max-width: 700px;
       margin: auto;
-      padding: 2rem;
+      padding: 2rem 1.5rem;
       background-color: #ffffff;
       border-radius: 15px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     }
 
     .form-label {
       font-weight: 500;
     }
 
+    .top-header {
+      background: linear-gradient(to right, #ff6f00, #ff9800);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      border-bottom: 5px solid #e65100;
+      border-radius: 0 0 15px 15px;
+      position: relative;
+    }
+
+    .top-header h1 {
+      font-weight: 700;
+      font-size: 1.7rem;
+    }
+
+    .back-btn-top {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+
     @media (max-width: 576px) {
+      .top-header h1 {
+        font-size: 1.2rem;
+        padding-left: 40px;
+        padding-right: 10px;
+        word-break: break-word;
+      }
+
       .form-container {
+        margin-top: 20px;
         padding: 1.2rem;
-        margin-top: 10%;
+      }
+
+      .back-btn-top {
+        font-size: 0.6rem;
+        padding: 2px 8px;
+      }
+
+      .back-btn-top i {
+        font-size: 0.5rem;
       }
     }
   </style>
 </head>
 <body>
+  <div class="overlay">
+    <!-- Top Header with Back Button -->
+    <div class="top-header py-3 text-center text-white">
+      <a href="{% url 'user_dashboard' %}" class="btn btn-light back-btn-top">
+        <i class="bi bi-arrow-left"></i> Back
+      </a>
+      <h1 class="mb-0">BJP <span class="text-dark">KOTTAYAM</span> <span class="text-light">WEST</span></h1>
+    </div>
 
-  <div class="container py-4">
-    <div class="form-container">
-      <h3 class="mb-4 text-center text-success"><i class="bi bi-journal-text"></i> VARD Meeting Collection</h3>
+    <!-- Form Container -->
+    <div class="container pt-4">
+      <div class="form-container">
+        <h3 class="mb-4 text-center text-success"><i class="bi bi-journal-text"></i> VARD Meeting Collection</h3>
 
-      <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
+        <form method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
 
-        <div class="mb-3">
-          <label for="office_bearer_name" class="form-label">Name of Office Bearer</label>
-          <input type="text" class="form-control" id="office_bearer_name" name="office_bearer_name" required />
-        </div>
+          <div class="mb-3">
+            <label for="ward_incharge" class="form-label">Ward Incharge Name</label>
+            <input type="text" class="form-control" id="ward_incharge" name="ward_incharge" required />
+          </div>
 
-        <div class="mb-3">
-          <label for="designation" class="form-label">Designation</label>
-          <input type="text" class="form-control" id="designation" name="designation" required />
-        </div>
+          <div class="mb-3">
+            <label for="mobile_number" class="form-label">Ward Incharge Mobile Number</label>
+            <input type="tel" class="form-control" id="mobile_number" name="mobile_number" pattern="[0-9]{10}" maxlength="10" required />
+            <div class="form-text">Enter 10-digit mobile number</div>
+          </div>
 
-        <div class="mb-3">
-          <label for="mobile_number" class="form-label">Mobile Number</label>
-          <input type="tel" class="form-control" id="mobile_number" name="mobile_number" pattern="[0-9]{10}" maxlength="10" required />
-          <div class="form-text">Enter 10-digit mobile number</div>
-        </div>
+          <div class="mb-3">
+            <label for="office_bearer_name" class="form-label">Name of Office Bearer</label>
+            <input type="text" class="form-control" id="office_bearer_name" name="office_bearer_name" required />
+          </div>
 
-        <div class="mb-3">
-          <label for="ward_incharge" class="form-label">Ward Incharge Name</label>
-          <input type="text" class="form-control" id="ward_incharge" name="ward_incharge" required />
-        </div>
+          <div class="mb-3">
+            <label for="meeting_date" class="form-label">Meeting Date</label>
+            <input type="date" class="form-control" id="meeting_date" name="meeting_date" required />
+          </div>
 
-        <div class="mb-3">
-          <label for="meeting_date" class="form-label">Meeting Date</label>
-          <input type="date" class="form-control" id="meeting_date" name="meeting_date" required />
-        </div>
+          <div class="mb-3">
+            <label for="number_of_attendees" class="form-label">Number of People Attended</label>
+            <input type="number" class="form-control" id="number_of_attendees" name="number_of_attendees" min="1" required />
+          </div>
 
-        <div class="mb-3">
-          <label for="number_of_attendees" class="form-label">Number of People Attended</label>
-          <input type="number" class="form-control" id="number_of_attendees" name="number_of_attendees" min="1" required />
-        </div>
+          <div class="mb-3">
+            <label for="image1" class="form-label">Upload Photo 1</label>
+            <input type="file" class="form-control" id="image1" name="image1" accept=".jpg,.jpeg,.png" required />
+            <div class="form-text" style="font-size:11px;">Only JPG or PNG images allowed. Max size: 10MB.</div>
+            <div id="error-image1" class="form-text text-danger"></div>
+          </div>
 
-        <div class="mb-3">
-          <label for="image1" class="form-label">Upload Photo 1</label>
-          <input type="file" class="form-control" id="image1" name="image1" accept=".jpg,.jpeg,.png" required />
-          <div class="form-text" style="font-size:11px;">Only JPG or PNG images allowed. Max size: 10MB.</div>
-          <div id="error-image1" class="form-text text-danger"></div>
-        </div>
+          <div class="mb-3">
+            <label for="image2" class="form-label">Upload Photo 2</label>
+            <input type="file" class="form-control" id="image2" name="image2" accept=".jpg,.jpeg,.png" required />
+            <div class="form-text" style="font-size:11px;">Only JPG or PNG images allowed. Max size: 10MB.</div>
+            <div id="error-image2" class="form-text text-danger"></div>
+          </div>
 
-        <div class="mb-3">
-          <label for="image2" class="form-label">Upload Photo 2</label>
-          <input type="file" class="form-control" id="image2" name="image2" accept=".jpg,.jpeg,.png" required />
-          <div class="form-text" style="font-size:11px;">Only JPG or PNG images allowed. Max size: 10MB.</div>
-          <div id="error-image2" class="form-text text-danger"></div>
-        </div>
-
-
-        <div class="text-center">
-          <button type="submit" class="btn btn-success px-5">
-            <i class="bi bi-send-fill"></i> Submit
-          </button>
-          <a href="{% url 'user_dashboard' %}" class="btn btn-outline-secondary ms-2">Back</a>
-        </div>
-      </form>
+          <div class="text-center">
+            <button type="submit" class="btn btn-success px-5">
+              <i class="bi bi-send-fill"></i> Submit
+            </button>
+            <a href="{% url 'user_dashboard' %}" class="btn btn-outline-secondary ms-2">Back</a>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 
@@ -104,30 +154,29 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
   <script>
-function validateImage(inputId, errorId) {
-  const input = document.getElementById(inputId);
-  const errorDiv = document.getElementById(errorId);
-  const file = input.files[0];
+    function validateImage(inputId, errorId) {
+      const input = document.getElementById(inputId);
+      const errorDiv = document.getElementById(errorId);
+      const file = input.files[0];
 
-  errorDiv.textContent = "";
+      errorDiv.textContent = "";
 
-  if (file) {
-    const fileSizeMB = file.size / (1024 * 1024);
-    const fileType = file.type;
+      if (file) {
+        const fileSizeMB = file.size / (1024 * 1024);
+        const fileType = file.type;
 
-    if (!["image/jpeg", "image/png"].includes(fileType)) {
-      errorDiv.textContent = "Only JPG or PNG images are allowed.";
-      input.value = "";
-    } else if (fileSizeMB > 10) {
-      errorDiv.textContent = "Image must be less than or equal to 10MB.";
-      input.value = "";
+        if (!["image/jpeg", "image/png"].includes(fileType)) {
+          errorDiv.textContent = "Only JPG or PNG images are allowed.";
+          input.value = "";
+        } else if (fileSizeMB > 10) {
+          errorDiv.textContent = "Image must be less than or equal to 10MB.";
+          input.value = "";
+        }
+      }
     }
-  }
-}
 
-document.getElementById('image1').addEventListener('change', () => validateImage('image1', 'error-image1'));
-document.getElementById('image2').addEventListener('change', () => validateImage('image2', 'error-image2'));
-</script>
-
+    document.getElementById('image1').addEventListener('change', () => validateImage('image1', 'error-image1'));
+    document.getElementById('image2').addEventListener('change', () => validateImage('image2', 'error-image2'));
+  </script>
 </body>
 </html>

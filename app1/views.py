@@ -54,7 +54,6 @@ def meeting_form(request):
 
         ward_incharge = request.POST.get('ward_incharge')
         office_bearer_name = request.POST.get('office_bearer_name')
-        designation = request.POST.get('designation')
         mobile_number = request.POST.get('mobile_number')
         meeting_date = request.POST.get('meeting_date')
         number_of_attendees = request.POST.get('number_of_attendees')
@@ -67,7 +66,6 @@ def meeting_form(request):
             ward_number=ward_number,
             ward_incharge=ward_incharge,
             office_bearer_name=office_bearer_name,
-            designation=designation,
             mobile_number=mobile_number,
             meeting_date=meeting_date,
             number_of_attendees=number_of_attendees,

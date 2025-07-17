@@ -21,11 +21,13 @@ class Constituency(models.Model):
     const_id=models.AutoField(primary_key=True)
     name = models.CharField(max_length=100)
 
-    def __str__(self):
-        return self.name
 
     class Meta:
-        db_table='constituency'
+        verbose_name = "Mandalam"
+        verbose_name_plural = "Mandalams"
+
+    def __str__(self):
+        return self.name
 
 
 #creating table for LocalBody
@@ -38,7 +40,7 @@ class LocalBody(models.Model):
     new_ward_count=models.IntegerField()
 
     def __str__(self):
-        return self.name
+        return f"{self.name}"
 
     class Meta:
         db_table='localbody'
@@ -51,7 +53,6 @@ class MeetingReport(models.Model):
     ward_number = models.IntegerField(null=True)
     ward_incharge=models.CharField(max_length=200,null=True)
     office_bearer_name=models.CharField(max_length=90)
-    designation=models.CharField(max_length=80)
     mobile_number=models.IntegerField()
     meeting_date=models.DateField()
     number_of_attendees=models.IntegerField()

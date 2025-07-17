@@ -18,6 +18,8 @@
     border-radius: 0 0 10px 10px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
   }
+
+
   .card:hover {
     transform: translateY(-3px);
     transition: 0.3s ease;
@@ -38,12 +40,23 @@
     font-size: 0.7rem;
   }
 
+  .ward-subtitle {
+  font-size: 0.9rem;
+}
+
+@media (max-width: 576px) {
+  .ward-subtitle {
+    font-size: 0.65rem;
+  }
+}
+
+
   .dashboard-header p {
     font-size: 0.7rem;
   }
 
   .dashboard-header .btn {
-    font-size: 0.65rem;
+    font-size: 0.5rem;
     padding: 0.25rem 0.5rem;
     white-space: nowrap;
     max-width: 100px; /* Or use width: fit-content; */
@@ -52,24 +65,25 @@
   }
 }
 
+
 </style>
 
 </head>
 <body>
 
 <div class="dashboard-header px-3 py-3">
-  <div class="d-flex justify-content-between align-items-center flex-nowrap">
+  <div class="d-flex justify-content-between align-items-center">
     <div class="text-truncate">
-      <h3 class="mb-0 fw-bold welcome-title">Welcome to VARD Dashboard</h3>
-      <p class="mb-0">Submit your meeting reports</p>
+      <h2 class="mb-1 fw-bold welcome-title">Bharatiya Janata Party - Kottayam</h2>
+      <p class="mb-0 ward-subtitle">Ward Meeting Data Collection App</p>
     </div>
-    <div class="ms-2">
-      <a href="/admin/" class="btn btn-sm btn-light text-dark fw-semibold">
-        <i class="bi bi-shield-lock me-1"></i> Admin Portal
-      </a>
-    </div>
+    <a href="/admin/" class="btn btn-sm btn-light text-dark fw-semibold ms-3">
+      <i class="bi bi-shield-lock me-1"></i> Admin Portal
+    </a>
   </div>
 </div>
+
+
 
 
 
@@ -82,8 +96,9 @@
         <a href="{% url 'select_constituency' %}" class="text-decoration-none">
           <div class="card text-center p-4 h-100">
             <i class="bi bi-journal-text card-icon mb-2"></i>
-            <h5 class="card-title">Fill Meeting Report</h5>
-            <p class="text-muted small">Start a new VARD meeting report.</p>
+            <h5 class="card-title">Add your Meeting Report</h5>
+            <p class="text-muted small">click to add new meeting report.</p>
+            <p class="text-muted small" style="font-size:9px;">മീറ്റിംഗ് റിപ്പോർട്ട് ചെയ്യാൻ ക്ലിക്ക് ചെയ്യുക</p>
           </div>
         </a>
       </div>

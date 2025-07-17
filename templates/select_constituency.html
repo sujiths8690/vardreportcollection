@@ -41,9 +41,11 @@
         <select id="ward_number" name="ward_number" class="form-select" required></select>
       </div>
 
-      <div class="text-end">
+      <div class="d-flex justify-content-between">
+        <a href="{% url 'user_dashboard' %}" class="btn btn-outline-secondary">Back</a>
         <button type="submit" class="btn btn-warning">Next</button>
       </div>
+
     </form>
   </div>
 

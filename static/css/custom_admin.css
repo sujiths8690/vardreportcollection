@@ -1,0 +1,15 @@
+/* Add a red border to verify CSS is loading */
+body {
+    border: 5px solid red !important;
+}
+
+/* Change top header to orange */
+#header {
+    background-color: #ff6600 !important;
+}
+
+/* Change module headings to orange */
+.module caption {
+    background-color: #ff6600 !important;
+    color: white !important;
+}
