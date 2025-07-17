@@ -88,6 +88,21 @@ class ReadOnlyAdmin(admin.ModelAdmin):
 
     readonly_fields = [field.name for field in MeetingReport._meta.fields] + ['image1_tag', 'image2_tag', 'local_body_type']
 
+    fields = [
+        'meeting_report_id',
+        'constituency',
+        'local_body',
+        'local_body_type',
+        'ward_number',
+        'ward_incharge',
+        'mobile_number',
+        'office_bearer_name',
+        'meeting_date',
+        'number_of_attendees',
+        'image1_tag',
+        'image2_tag',
+    ]
+
     # ✅ Filters on the right sidebar
     list_filter = ('constituency', 'local_body', 'meeting_date')
 
